@@ -4,6 +4,12 @@
     padding-top: 45px;
     background-color: #000;
     outline: 1px red solid;
+    font-family: 'Inter', 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
 }
 
 @media screen and (max-width: 320px) {
