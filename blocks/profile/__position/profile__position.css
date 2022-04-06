@@ -5,3 +5,12 @@
     color: #fff;
     margin: 16px 0 0 0;
 }
+
+@media screen and (max-width: 460px) {
+    .profile__position {
+        font-size: 14px;
+        line-height: 1.21;
+        text-align: center;
+        margin-top: 14px;
+    }
+}
