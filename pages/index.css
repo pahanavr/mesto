@@ -22,3 +22,6 @@
 @import url(../blocks/elements/__item-description/elements__item-description.css);
 @import url(../blocks/elements/__item-name/elements__item-name.css);
 @import url(../blocks/elements/__item-button/elements__item-button.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);

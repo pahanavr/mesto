@@ -2,6 +2,7 @@
     max-width: 1280px;
     margin: 0 auto;
     padding-top: 45px;
+    padding-bottom: 60px;
     background-color: #000;
     outline: 1px red solid;
     font-family: 'Inter', 'Arial', sans-serif;
@@ -15,5 +16,6 @@
 @media screen and (max-width: 320px) {
     .page {
         padding-top: 28px;
+        padding-bottom: 28px;
     }
 }
