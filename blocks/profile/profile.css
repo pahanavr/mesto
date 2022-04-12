@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     position: relative;
-    outline: 1px solid red;
 }
 
 @media screen and (max-width: 880px) {

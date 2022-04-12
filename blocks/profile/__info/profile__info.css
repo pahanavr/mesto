@@ -4,12 +4,11 @@
     width: 336px;
     min-height: 73px;
     position: relative;
-    outline: 1px red solid;
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 680px) {
     .profile__info {
     max-width: 100%;
-    justify-content: center;
+    justify-content: center;;
     }
 }

@@ -2,6 +2,15 @@
     width: 22px;
     height: 19px;
     background-image: url(../../../images/Like\ Button.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
     background-color: #fff;
     border: 0;
+    cursor: pointer;
+    
+}
+
+.elements__item-button:hover {
+    opacity: 0.5;
+
 }

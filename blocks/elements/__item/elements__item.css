@@ -2,8 +2,7 @@
     width: 100%;
     background-color: #fff;
     border-radius: 10px;
-    outline: 1px red solid;
-}
+    }
 
 @media screen and (max-width: 610px) {
     .elements__item {
