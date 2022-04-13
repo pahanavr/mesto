@@ -1,6 +1,6 @@
 .elements {
     width: 880px;
-    margin: 0 auto;
+    margin: 0 auto 67px;
     display: grid;
     grid-template-columns: repeat(3, 282px);
     grid-template-rows: repeat(2, 362px);
@@ -12,7 +12,7 @@
     .elements {
         width: 581px;
         grid-template-columns: repeat(2, 282px);
-        grid-template-rows: repeat(4, 362px);
+        grid-template-rows: repeat(3, 362px);
     }
 }
 
@@ -22,5 +22,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin-bottom: 48px;
     }
 }
