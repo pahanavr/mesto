@@ -1,12 +1,16 @@
 .profile__position {
+    max-width: 336px;
     font-size: 18px;
     line-height: 1.22;
     font-weight: 400;
     color: #fff;
     margin: 16px 0 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 880px) {
     .profile__position {
         font-size: 14px;
         line-height: 1.21;

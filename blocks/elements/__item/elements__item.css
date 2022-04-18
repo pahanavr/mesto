@@ -3,9 +3,3 @@
     background-color: #fff;
     border-radius: 10px;
     }
-
-@media screen and (max-width: 610px) {
-    .elements__item {
-        height: 362px;
-    }
-}

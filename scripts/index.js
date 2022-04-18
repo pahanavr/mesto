@@ -12,24 +12,14 @@ let positionProfile = formElement.querySelector('#position');//инпут зан
 //функция открытия и закрытия попапа
 function popupOpenToggle() {
     popup.classList.toggle('popup_opened');
+    nameProfile.value = textName.textContent;
+    positionProfile.value = textPosition.textContent;
 }
-//функция закрытия попапа кликом по пространству вокруг поля редактирования
-function popupOverClick(evt) {
-    console.log(evt.target);
-    console.log(evt.currentTarget);
-    if (evt.target === evt.currentTarget) {
-        popupOpenToggle();
-    }
-}
+
 //открытие попапа
 openPopupButton.addEventListener('click', popupOpenToggle);
 //закрытие попапа
 closePopupButton.addEventListener('click', popupOpenToggle);
-//закрытие попапа вне
-popup.addEventListener('click', popupOverClick);
-//заполнение инпутов
-nameProfile.value = textName.textContent;
-positionProfile.value = textPosition.textContent;
 
 //функция сабмита
 function formSubmitHandler(evt) {

@@ -19,9 +19,8 @@
 @media screen and (max-width: 610px) {
     .elements {
         width: 282px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        grid-template-rows: repeat(6, 362px);
+        grid-template-columns: 282px;
         margin-bottom: 48px;
     }
 }
