@@ -25,16 +25,23 @@ const initialCards = [
     }
 ]; 
 
-const openPopupEditButton = document.querySelector('.profile__edit-button');//button of opening edit-popup
-const popup = document.querySelector('.popup');//popup block
-const closePopupsButton = document.querySelector('.popup__close-button');//button of closing edit-popup
+const openEditPopupButton = document.querySelector('.profile__edit-button');//button of opening edit-popup
+const editPopup = document.querySelector('.popup_edit_type');//popup block
+const closeEditPopupButton = editPopup.querySelector('.popup__close-button');//button of closing edit-popup
+const addPopup = document.querySelector('.popup_add_type');
+const openAddPopupButton = document.querySelector('.profile__add-button');
+const closeAddPopupButton = addPopup.querySelector('.popup__close-button');
+
 
 let profile = document.querySelector('.profile');//block profile
 let textName = profile.querySelector('.profile__name');//profile name
 let textPosition = profile.querySelector('.profile__position');//profile position
-let formElement = popup.querySelector('.popup__edit-form');//form edit
-let nameProfile = formElement.querySelector('#name');//input name
-let positionProfile = formElement.querySelector('#position');//input position
+let editFormElement = editPopup.querySelector('.popup__edit-form');//form edit
+let addFormElement = document.querySelector('.popup__add-form');
+let nameProfile = editFormElement.querySelector('#name');//input name
+let positionProfile = editFormElement.querySelector('#position');//input position
+let titleElement = addFormElement.querySelector('#title');//input title
+let imageElement = addFormElement.querySelector('#image');//input image link
 
 const itemsContainer = document.querySelector('.elements');//section elements
 const itemTemplate = document.querySelector('#item').content.querySelector('.elements__item');//template of element
@@ -81,107 +88,48 @@ initialCards.forEach((item) => {
 });
 
 
-
-// //Dom elements
-
-// const elementContainer = document.querySelector('.elements');
-// const form = document.querySelector('.popup__add-form');
-// const inputAdd = document.querySelector('.popup__field');
-
-// //обработчики событий
-// const handleSubmitAddItemForm = (evt) => {
-//     evt.preventDefault(); 
-//     renderItem({ name: inputAdd.value })
-
-//     inputAdd.value = '';
-// };
-
-// const handleDeleteItem = (evt) => {
-//     evt.traget.closest('.elements__item').remove();
-// }
-
-
-// //Generating item
-
-
-
-// //Render item
-
-// const itemTemplate = document.querySelector('#element').content;
-
-
-
-
-// // const renderItem = (item) => {
-// //     elementContainer.insertAdjacentHTML(
-// //     "afterbegin", 
-// //     `
-// //     <div class="elements__item">
-// //         <img class="elements__item-image" src="${item.link}" alt="Карачаевск">
-// //         <div class="elements__item-description">
-// //             <h2 class="elements__item-name">${item.name}</h2>
-// //             <button class="elements__like-button" type="button"></button>
-// //         </div>
-// //         <button class="elements__delete-button" type="button"></button>
-// //     </div>
-// //     `
-// //     );
-// // }
-
-// initialCards.forEach((item) => {
-//     renderItem(item);
-// });
-
-// form.addEventListener('submit', handleSubmitAddItemForm);
-
-
-//___________________________________________________________________________
-
-
-
 //function of opening and closing edit-popup
 function popupOpenToggle() {
-    popup.classList.toggle('popup_opened');
+    editPopup.classList.toggle('popup_opened');
+    nameProfile.value = textName.textContent;
+    positionProfile.value = textPosition.textContent;
 }
 
 //function of saving profile info
-function formSubmitHandler(evt) {
+function formProfileSubmitHandler(evt) {
     evt.preventDefault(); 
     textName.textContent = nameProfile.value;
     textPosition.textContent = positionProfile.value;    
     popupOpenToggle();
 }
 
-
-//function of saving element info
-const openPopupAddButton = document.querySelector('.profile__add-button');//button of opening add-popup
-let addFormElement = popup.querySelector('.popup__add-form');
-let titleElement = document.querySelector('#title');//input title
-let imageElement = document.querySelector('#image');//input image
-
-
-
-
-//function of opening image of element
-const openImageElementButton = document.querySelector('.elements__item-image');
-const popupImageView = document.querySelector('.popup__image-view');
-
-function popupImageToggle() {
-    popupImageView.classList.add('popup__image-view_opened');
+//function of opening and closing add-popup
+function addPopupOpenToggle() {
+  addPopup.classList.toggle('popup_opened');
 }
 
-
-
-//function of creating element
-function formSubmitHandler(evt) {
-    evt.preventDefault(); 
-    //textName.textContent = nameProfile.value;
-    //textPosition.textContent = positionProfile.value;    
-    popupImageToggle();
+//function of submit new item
+function formItemSubmitHandler(evt) {
+    evt.preventDefault();
+    createItem({ 
+      name: titleElement.value, 
+      link: imageElement.value });
 }
 
+// //function of opening image of element
+// const openImageElementButton = document.querySelector('.elements__item-image');
+// const popupImageView = document.querySelector('.popup__image-view');
 
-openPopupEditButton.addEventListener('click', popupOpenToggle);//edit-popup open
-closePopupsButton.addEventListener('click', popupOpenToggle);//edit-popup close
-formElement.addEventListener('submit', formSubmitHandler); //submit profile info
-openImageElementButton.addEventListener('click', popupImageToggle);//view-image-popup toggle
+// function popupImageToggle() {
+//     popupImageView.classList.add('popup__image-view_opened');
+// }
+
+
+openEditPopupButton.addEventListener('click', popupOpenToggle);//edit-popup open
+closeEditPopupButton.addEventListener('click', popupOpenToggle);//edit-popup close
+editFormElement.addEventListener('submit', formProfileSubmitHandler); //submit profile info
+openAddPopupButton.addEventListener('click', addPopupOpenToggle);
+closeAddPopupButton.addEventListener('click', addPopupOpenToggle);
+addFormElement.addEventListener('submit', formItemSubmitHandler);
+
+//openImageElementButton.addEventListener('click', popupImageToggle);//view-image-popup toggle
