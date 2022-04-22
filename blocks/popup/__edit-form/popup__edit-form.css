@@ -1,13 +1,13 @@
-.popup__form {
+.popup__edit-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 358px;
-    height: 168px;
+    min-height: 168px;
 }
 
 @media screen and (max-width: 525px) {
-    .popup__form {
+    .popup__edit-form {
         width: 100%;
     }
 }

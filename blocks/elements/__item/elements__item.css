@@ -2,10 +2,5 @@
     width: 100%;
     background-color: #fff;
     border-radius: 10px;
+    position: relative;
     }
-
-@media screen and (max-width: 610px) {
-    .elements__item {
-        height: 362px;
-    }
-}
