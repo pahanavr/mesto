@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: repeat(3, 282px);
     grid-template-rows: repeat(2, 362px);
+    grid-auto-rows: 362px;
+    grid-auto-columns: 282px;
     column-gap: 17px;
     row-gap: 20px;
 }

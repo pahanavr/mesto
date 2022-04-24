@@ -1,4 +1,4 @@
-.popup__edit-form {
+.popup__form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 525px) {
-    .popup__edit-form {
+    .popup__form {
         width: 100%;
     }
 }
