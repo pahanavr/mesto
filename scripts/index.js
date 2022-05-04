@@ -1,3 +1,4 @@
+const popups = document.querySelectorAll(".popup");
 const profileEditOpenButton = document.querySelector(".profile__edit-button"); //button of opening edit-popup
 const popupEdit = document.querySelector(".popup_edit_type"); //edit-popup
 const profileEditCloseButton = popupEdit.querySelector(".popup__close-button"); //button of closing edit-popup
@@ -102,6 +103,16 @@ function formItemSubmitHandler(evt) {
   });
   closePopup(popupAdd);
 }
+
+//function of popup over click
+  popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+        closePopup(popup);
+      };
+    });
+  });
+
 
 profileEditOpenButton.addEventListener("click", openedProfilePopup); //edit-popup open
 profileEditCloseButton.addEventListener("click", () => {
