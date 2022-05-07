@@ -1,4 +1,4 @@
-const popups = document.querySelectorAll(".popup");
+const popups = Array.from(document.querySelectorAll(".popup"));
 const profileEditOpenButton = document.querySelector(".profile__edit-button"); //button of opening edit-popup
 const popupEdit = document.querySelector(".popup_edit_type"); //edit-popup
 const profileEditCloseButton = popupEdit.querySelector(".popup__close-button"); //button of closing edit-popup
@@ -29,13 +29,35 @@ const itemTemplate = itemsContainer
 //function open popup's
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown', popupCloseByEsc);
+  document.addEventListener("keydown", popupCloseByEsc);
 }
+
 //function close popup's
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', popupCloseByEsc);
+  document.removeEventListener("keydown", popupCloseByEsc);
 }
+
+//function of close popup's by over click
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (
+      evt.target.classList.contains("popup") ||
+      evt.target.classList.contains("popup__close")
+    ) {
+      closePopup(popup);
+    }
+  });
+});
+
+//function of close popup's by Escape button
+function popupCloseByEsc(evt) {
+  if (evt.key == "Escape") {
+    const popupOpened = document.querySelector(".popup_opened");
+    closePopup(popupOpened);
+  }
+}
+
 //function of givin values to the fields
 function openedProfilePopup() {
   nameProfile.value = textName.textContent;
@@ -55,7 +77,7 @@ function formProfileSubmitHandler(evt) {
 function likeButtonToggle(evt) {
   evt.target
     .closest(".elements__like-button")
-    .classList.toggle("elements__like-button_Opened");
+    .classList.toggle("elements__like-button_active");
 }
 
 //function of deleting element
@@ -106,23 +128,6 @@ function formItemSubmitHandler(evt) {
   closePopup(popupAdd);
 }
 
-//function of popup over click
-popups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-      closePopup(popup);
-    };
-  });
-});
-
-function popupCloseByEsc (evt) {
-  if (evt.key == 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  };
-};
-
-
 profileEditOpenButton.addEventListener("click", openedProfilePopup); //edit-popup open
 profileEditCloseButton.addEventListener("click", () => {
   closePopup(popupEdit);
@@ -139,7 +144,7 @@ formAdd.addEventListener("submit", formItemSubmitHandler); //submit create item
 
 imageView.addEventListener("click", () => {
   openPopup(popupImage);
-});//image-popup open
+}); //image-popup open
 imageViewCloseButton.addEventListener("click", () => {
   closePopup(popupImage);
 }); //image-popup close
