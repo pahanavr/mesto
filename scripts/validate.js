@@ -66,12 +66,24 @@ const checkInputValidity = (parameters, formElement, inputElement) => {
   }
 };
 
+//function of disable submit button
+const buttonCardSubmitDisabled = (submitButton, inactiveButtonClass) => {
+  submitButton.classList.add(inactiveButtonClass);
+  submitButton.setAttribute("disabled", true);
+};
+
+//function of enable submit button
+const buttonCardSubmitEnabled = (submitButton, inactiveButtonClass) => {
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.removeAttribute("disabled", true);
+};
+
 //function of toggle sumbit button
 const buttonToggle = (inputList, inactiveButtonClass, submitButton) => {
   if (hasInvalidInput(inputList)) {
-    submitButton.classList.add(inactiveButtonClass);
+    buttonCardSubmitDisabled(submitButton, inactiveButtonClass);
   } else {
-    submitButton.classList.remove(inactiveButtonClass);
+    buttonCardSubmitEnabled(submitButton, inactiveButtonClass);
   }
 };
 

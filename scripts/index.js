@@ -7,6 +7,7 @@ const elementsAddOpenButton = document.querySelector(".profile__add-button"); //
 const elementsAddCloseButton = popupAdd.querySelector(".popup__close-button"); //close-button
 const popupImage = document.querySelector(".popup_image_type"); //image-popup
 const imageViewCloseButton = popupImage.querySelector(".popup__close-button"); //button of closing image-popup
+const imageView = document.querySelector(".popup__image");//image view
 
 const profile = document.querySelector(".profile"); //block profile
 const textName = profile.querySelector(".profile__name"); //profile name
@@ -84,7 +85,6 @@ function likeButtonToggle(evt) {
 function handleDeleteItem(evt) {
   evt.target.closest(".elements__item").remove();
 }
-const imageView = document.querySelector(".popup__image");
 //function of opening
 const openImageViewPopup = (item) => {
   imageView.src = item.target.src;
@@ -94,7 +94,7 @@ const openImageViewPopup = (item) => {
 };
 
 //generating item
-const generateItem = (item) => {
+const generateCard = (item) => {
   const newItem = itemTemplate.cloneNode(true);
   const imageItem = newItem.querySelector(".elements__item-image");
   imageItem.src = item.link;
@@ -111,7 +111,7 @@ const generateItem = (item) => {
 
 //creating item
 const createItem = (item) => {
-  itemsContainer.prepend(generateItem(item));
+  itemsContainer.prepend(generateCard(item));
 };
 
 initialCards.forEach((item) => {
@@ -119,13 +119,15 @@ initialCards.forEach((item) => {
 });
 
 //function of submit new item
-function formItemSubmitHandler(evt) {
+function formCardSubmitHandler(evt) {
   evt.preventDefault();
   createItem({
     name: titleElement.value,
     link: imageElement.value,
   });
   closePopup(popupAdd);
+  titleElement.value = '';
+  imageElement.value = '';
 }
 
 profileEditOpenButton.addEventListener("click", openedProfilePopup); //edit-popup open
@@ -135,12 +137,14 @@ profileEditCloseButton.addEventListener("click", () => {
 formEdit.addEventListener("submit", formProfileSubmitHandler); //submit profile info
 
 elementsAddOpenButton.addEventListener("click", () => {
+  const submitButton = formAdd.querySelector(parameters.submitButtonSelector);
   openPopup(popupAdd);
+  buttonCardSubmitDisabled(submitButton, parameters.inactiveButtonClass);
 }); //add-popup open
 elementsAddCloseButton.addEventListener("click", () => {
   closePopup(popupAdd);
 }); //add-popup close
-formAdd.addEventListener("submit", formItemSubmitHandler); //submit create item
+formAdd.addEventListener("submit", formCardSubmitHandler); //submit create item
 
 imageView.addEventListener("click", () => {
   openPopup(popupImage);
