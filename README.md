@@ -1,24 +1,27 @@
-# Проект: Место
+# Project: Mesto
 
-Проектная работа 4. Сайт аля инстаграм ограниченным функционалом (пока).
-### Обзор
+### Review
 
-В данном учебном проекте я использовал:
+The web service like Instagram with the own content. 
+Here you can change your profile name and position, add your original card with your image and delete if you don't like it. Also you can like a card.
+You can open this website on any device from mobile phone to PC.
 
-* Макет в Figma
-* Контентные картинки
-* Скиллы
+**Figma layouts**
 
-**Figma**
+* [First layout Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Second layout Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+* [Third layout Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+**Images**
 
-**Картинки**
+Optimized images by [TinyPng](https://tinypng.com/).
 
-Впервые [оптимизировал картинки](https://tinypng.com/), чтобы сайт был более быстрым. Оказалось вовсе несложно.
+**Tool set**
 
-**Скиллы**
+* HTML
+* CSS (flex, grid)
+* BEM
+* Adaptive design
+* JavaScript
 
-Я использовал весь изученный арсенал по верстке, включая флексы, гриды. Так же сделал данный сайт адаптивным, вы можете его юзатт как и на ваше Макбуке, так и Айфоне. Впервые использвал знания по JavaScript.
-
-Заходите посмотреть [Ссылка на cайт](https://pahanavr.github.io/mesto/)
+Go watch [Mesto](https://pahanavr.github.io/mesto/)
