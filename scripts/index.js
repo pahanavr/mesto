@@ -1,3 +1,18 @@
+import { initialCards } from "./cards.js";
+import {Card, popupImage, itemsContainer} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
+
+
+
+export const parameters = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__field",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "popup__field_type_error",
+  errorClass: "popup__error_visible",
+};
+
 const popups = Array.from(document.querySelectorAll(".popup"));
 const profileEditOpenButton = document.querySelector(".profile__edit-button"); //button of opening edit-popup
 const popupEdit = document.querySelector(".popup_edit_type"); //edit-popup
@@ -5,9 +20,8 @@ const profileEditCloseButton = popupEdit.querySelector(".popup__close-button"); 
 const popupAdd = document.querySelector(".popup_add_type"); //add-popup
 const elementsAddOpenButton = document.querySelector(".profile__add-button"); //add-button
 const elementsAddCloseButton = popupAdd.querySelector(".popup__close-button"); //close-button
-const popupImage = document.querySelector(".popup_image_type"); //image-popup
+
 const imageViewCloseButton = popupImage.querySelector(".popup__close-button"); //button of closing image-popup
-const imageView = document.querySelector(".popup__image");//image view
 
 const profile = document.querySelector(".profile"); //block profile
 const textName = profile.querySelector(".profile__name"); //profile name
@@ -18,17 +32,12 @@ const nameProfile = formEdit.querySelector("#name"); //input name
 const positionProfile = formEdit.querySelector("#position"); //input position
 const titleElement = formAdd.querySelector("#title"); //input title
 const imageElement = formAdd.querySelector("#image"); //input image link
-const imageCaption = popupImage.querySelector(".popup__image-caption"); //image-popup caption
 
-const itemsContainer = document.querySelector(".elements"); //section elements
-const itemTemplate = itemsContainer
-  .querySelector("#item")
-  .content.querySelector(".elements__item"); //template of element
 
 //functions
 
 //function open popup's
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", popupCloseByEsc);
 }
@@ -74,60 +83,32 @@ function formProfileSubmitHandler(evt) {
   closePopup(popupEdit);
 }
 
-//function of like elements
-function likeButtonToggle(evt) {
-  evt.target
-    .closest(".elements__like-button")
-    .classList.toggle("elements__like-button_active");
+
+function createCard(cardInfo) {
+  const card = new Card(cardInfo, "#item");
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
-//function of deleting element
-function handleDeleteItem(evt) {
-  evt.target.closest(".elements__item").remove();
-}
-//function of opening
-const openImageViewPopup = (item) => {
-  imageView.src = item.target.src;
-  imageView.alt = item.target.alt;
-  imageCaption.textContent = item.target.alt;
-  openPopup(popupImage);
-};
+  initialCards.forEach((item) => {
+    const newCard = createCard(item, "#item");
+    createCard(newCard);
+    itemsContainer.append(newCard);
+  })
 
-//generating item
-const generateCard = (item) => {
-  const newItem = itemTemplate.cloneNode(true);
-  const imageItem = newItem.querySelector(".elements__item-image");
-  imageItem.src = item.link;
-  imageItem.alt = item.name;
-  const titleItem = newItem.querySelector(".elements__item-name");
-  titleItem.textContent = item.name;
-  const likeButton = newItem.querySelector(".elements__like-button");
-  likeButton.addEventListener("click", likeButtonToggle);
-  const deleteButton = newItem.querySelector(".elements__delete-button");
-  deleteButton.addEventListener("click", handleDeleteItem);
-  imageItem.addEventListener("click", openImageViewPopup);
-  return newItem;
-};
 
-//creating item
-const createItem = (item) => {
-  itemsContainer.prepend(generateCard(item));
-};
 
-initialCards.forEach((item) => {
-  createItem(item);
-});
 
 //function of submit new item
 function formCardSubmitHandler(evt) {
   evt.preventDefault();
-  createItem({
+  createCard({
     name: titleElement.value,
     link: imageElement.value,
   });
   closePopup(popupAdd);
-  titleElement.value = '';
-  imageElement.value = '';
+  titleElement.value = "";
+  imageElement.value = "";
 }
 
 profileEditOpenButton.addEventListener("click", openedProfilePopup); //edit-popup open
@@ -146,9 +127,6 @@ elementsAddCloseButton.addEventListener("click", () => {
 }); //add-popup close
 formAdd.addEventListener("submit", formCardSubmitHandler); //submit create item
 
-imageView.addEventListener("click", () => {
-  openPopup(popupImage);
-}); //image-popup open
 imageViewCloseButton.addEventListener("click", () => {
   closePopup(popupImage);
 }); //image-popup close
