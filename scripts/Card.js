@@ -1,12 +1,6 @@
-import { openPopup } from "./index.js";
-export { popupImage, Card, itemsContainer };
+import { openPopup, imageCaption, imageView, popupImage } from "./index.js";
 
-const itemsContainer = document.querySelector(".elements"); //section elements
-const imageView = document.querySelector(".popup__image");
-const popupImage = document.querySelector(".popup_image_type"); //image-popup
-const imageCaption = popupImage.querySelector(".popup__image-caption");
-
-class Card {
+export class Card {
   constructor(cardInfo, cardTemplate) {
     this._name = cardInfo.name;
     this._link = cardInfo.link;
@@ -14,9 +8,7 @@ class Card {
   }
 
   _getTemplate() {
-    const itemTemplate = itemsContainer.querySelector(
-      this._cardTemplate
-    ).content;
+    const itemTemplate = document.querySelector(this._cardTemplate).content;
     const cardTemplate = itemTemplate
       .querySelector(".elements__item")
       .cloneNode(true);
@@ -52,6 +44,7 @@ class Card {
   //function of deleting element
   _handleDeleteItem() {
     this._element.remove();
+    this._element = null;
   }
 
   //function of opening

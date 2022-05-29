@@ -1,8 +1,10 @@
 import { initialCards } from "./cards.js";
-import { Card, popupImage, itemsContainer } from "./Card.js";
+import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
-export const parameters = {
+export { parameters, imageView, popupImage, imageCaption };
+
+const parameters = {
   formSelector: ".popup__form",
   inputSelector: ".popup__field",
   submitButtonSelector: ".popup__submit-button",
@@ -19,6 +21,9 @@ const popupAdd = document.querySelector(".popup_add_type"); //add-popup
 const elementsAddOpenButton = document.querySelector(".profile__add-button"); //add-button
 const elementsAddCloseButton = popupAdd.querySelector(".popup__close-button"); //close-button
 
+const imageView = document.querySelector(".popup__image");
+const popupImage = document.querySelector(".popup_image_type"); //image-popup
+const imageCaption = popupImage.querySelector(".popup__image-caption");
 const imageViewCloseButton = popupImage.querySelector(".popup__close-button"); //button of closing image-popup
 
 const profile = document.querySelector(".profile"); //block profile
@@ -30,6 +35,7 @@ const nameProfile = formEdit.querySelector("#name"); //input name
 const positionProfile = formEdit.querySelector("#position"); //input position
 const titleElement = formAdd.querySelector("#title"); //input title
 const imageElement = formAdd.querySelector("#image"); //input image link
+const itemsContainer = document.querySelector(".elements"); //section elements
 
 const profileValid = new FormValidator(parameters, formEdit);
 const cardValid = new FormValidator(parameters, formAdd);
@@ -121,7 +127,7 @@ formEdit.addEventListener("submit", formProfileSubmitHandler); //submit profile 
 
 elementsAddOpenButton.addEventListener("click", () => {
   openPopup(popupAdd);
-  cardValid._buttonCardSubmitDisabled();
+  cardValid.buttonCardSubmitDisabled();
 }); //add-popup open
 
 elementsAddCloseButton.addEventListener("click", () => {
