@@ -1,8 +1,6 @@
 import { initialCards } from "./cards.js";
-import {Card, popupImage, itemsContainer} from "./Card.js";
-import {FormValidator} from "./FormValidator.js";
-
-
+import { Card, popupImage, itemsContainer } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 export const parameters = {
   formSelector: ".popup__form",
@@ -33,6 +31,8 @@ const positionProfile = formEdit.querySelector("#position"); //input position
 const titleElement = formAdd.querySelector("#title"); //input title
 const imageElement = formAdd.querySelector("#image"); //input image link
 
+const profileValid = new FormValidator(parameters, formEdit);
+const cardValid = new FormValidator(parameters, formAdd);
 
 //functions
 
@@ -83,33 +83,35 @@ function formProfileSubmitHandler(evt) {
   closePopup(popupEdit);
 }
 
-
 function createCard(cardInfo) {
   const card = new Card(cardInfo, "#item");
   const cardElement = card.generateCard();
   return cardElement;
 }
 
-  initialCards.forEach((item) => {
-    const newCard = createCard(item, "#item");
-    createCard(newCard);
-    itemsContainer.append(newCard);
-  })
-
-
-
+initialCards.forEach((item) => {
+  const newCard = createCard(item, "#item");
+  createCard(newCard);
+  itemsContainer.prepend(newCard);
+});
 
 //function of submit new item
 function formCardSubmitHandler(evt) {
   evt.preventDefault();
-  createCard({
-    name: titleElement.value,
-    link: imageElement.value,
-  });
+  itemsContainer.prepend(
+    createCard({
+      name: titleElement.value,
+      link: imageElement.value,
+    })
+  );
   closePopup(popupAdd);
   titleElement.value = "";
   imageElement.value = "";
 }
+
+//Validations form's
+profileValid.enableValidation();
+cardValid.enableValidation();
 
 profileEditOpenButton.addEventListener("click", openedProfilePopup); //edit-popup open
 profileEditCloseButton.addEventListener("click", () => {
@@ -118,10 +120,10 @@ profileEditCloseButton.addEventListener("click", () => {
 formEdit.addEventListener("submit", formProfileSubmitHandler); //submit profile info
 
 elementsAddOpenButton.addEventListener("click", () => {
-  const submitButton = formAdd.querySelector(parameters.submitButtonSelector);
   openPopup(popupAdd);
-  buttonCardSubmitDisabled(submitButton, parameters.inactiveButtonClass);
+  cardValid._buttonCardSubmitDisabled();
 }); //add-popup open
+
 elementsAddCloseButton.addEventListener("click", () => {
   closePopup(popupAdd);
 }); //add-popup close
