@@ -1,3 +1,4 @@
+import './index.css';
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts/components/Section.js";
@@ -13,8 +14,6 @@ import {
   elementsAddOpenButton,
   nameProfile,
   positionProfile,
-  titleElement,
-  imageElement,
 } from "../scripts/utils/constants.js";
 
 //validation section
