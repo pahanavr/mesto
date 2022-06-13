@@ -9,7 +9,6 @@ export default class UserInfo {
       name: this._profileName.textContent,
       position: this._profilePosition.textContent,
     };
-
     return info;
   }
 

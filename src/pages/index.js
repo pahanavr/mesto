@@ -65,8 +65,8 @@ popupAdd.setEventListeners();
 const profileInfo = new UserInfo(".profile__name", ".profile__position");
 
 const popupEdit = new PopupWithForm(".popup_edit_type", {
-formCardSubmitHandler: (data) => {
-  profileInfo.setUserInfo(data);
+formCardSubmitHandler: (item) => {
+  profileInfo.setUserInfo(item['name-field'], item['position-field']);
   popupEdit.close();
 }
 });
@@ -79,9 +79,8 @@ elementsAddOpenButton.addEventListener("click", () => {
 });
 
 profileEditOpenButton.addEventListener("click", () => {
+  const { name, position } = profileInfo.getUserInfo();
+  nameProfile.value = name;
+  positionProfile.value = position;
   popupEdit.open();
-  const currentInfo = profileInfo.getUserInfo();
-  nameProfile.value = currentInfo.name;
-  positionProfile.value = currentInfo.position;
 });
- 
