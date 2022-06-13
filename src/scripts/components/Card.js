@@ -1,19 +1,18 @@
-import { openPopup, imageCaption, imageView, popupImage } from "./index.js";
-
-export class Card {
-  constructor(cardInfo, cardTemplate) {
+export default class Card {
+  constructor(cardInfo, cardTemplate, handleCardClick) {
     this._name = cardInfo.name;
     this._link = cardInfo.link;
     this._cardTemplate = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
     const itemTemplate = document.querySelector(this._cardTemplate).content;
-    const cardTemplate = itemTemplate
+    const cardElement = itemTemplate
       .querySelector(".elements__item")
       .cloneNode(true);
 
-    return cardTemplate;
+    return cardElement;
   }
 
   //generating item
@@ -47,14 +46,6 @@ export class Card {
     this._element = null;
   }
 
-  //function of opening
-  _openImageViewPopup() {
-    imageView.src = this._link;
-    imageView.alt = this._name;
-    imageCaption.textContent = this._name;
-    openPopup(popupImage);
-  }
-
   _setEventListeners() {
     this._likeButton.addEventListener("click", (evt) => {
       this._likeButtonToggle(evt);
@@ -65,7 +56,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._openImageViewPopup();
+      this._handleCardClick(this._name, this._link);
     });
   }
 }
