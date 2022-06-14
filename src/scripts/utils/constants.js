@@ -1,5 +1,5 @@
 export {initialCards, parameters, popups, profileEditOpenButton, popupEdit, profileEditCloseButton, 
-elementsAddOpenButton, elementsAddCloseButton, imageView, imageCaption, imageViewCloseButton, profile, textName, textPosition, formEdit,
+elementsAddOpenButton, elementsAddCloseButton, imageViewCloseButton, profile, textName, textPosition, formEdit,
 formAdd, nameProfile, positionProfile, titleElement, imageElement}
 
 const initialCards = [
@@ -46,9 +46,7 @@ const initialCards = [
   const elementsAddOpenButton = document.querySelector(".profile__add-button"); //add-button
   const elementsAddCloseButton = document.querySelector(".popup__close-button"); //close-button
   
-  const imageView = document.querySelector(".popup__image");
 
-  const imageCaption = document.querySelector(".popup__image-caption");
   const imageViewCloseButton = document.querySelector(".popup__close-button"); //button of closing image-popup
   
   const profile = document.querySelector(".profile"); //block profile

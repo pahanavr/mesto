@@ -7,10 +7,10 @@
 </head>
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="лого">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого">
     </header>
     <section class="profile">
-        <img class="profile__avatar" src="./images/image.jpg" alt="аватар">
+        <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="аватар">
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -38,10 +38,14 @@
             <button class="popup__close-button" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form novalidate class="popup__form popup__form_edit_type" name="edit-form">
-                <input type="text" id="name" class="popup__field" name="name-field" minlength="2" maxlength="40" required>
-                <span class="popup__error name-error"></span>
-                <input type="text" id="position" class="popup__field" name="position-field" minlength="2" maxlength="200" required>
-                <span class="popup__error position-error"></span>
+                <label class="popup__input">
+                    <input type="text" id="name" class="popup__field" name="name-field" minlength="2" maxlength="40" required>
+                    <span class="popup__error name-error"></span>
+                </label>
+                <label class="popup__input">
+                    <input type="text" id="position" class="popup__field" name="position-field" minlength="2" maxlength="200" required>
+                    <span class="popup__error position-error"></span>
+                </label>
                 <button type="submit" class="popup__submit-button">Сохранить</button>
             </form>
         </div>
@@ -51,10 +55,14 @@
             <button class="popup__close-button" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
             <form novalidate class="popup__form popup__form_add_type" name="add-form">
-                <input type="text" id="title" class="popup__field" name="title-field" placeholder="Название" minlength="2" maxlength="30" required>
-                <span class="popup__error title-error"></span>
-                <input type="url" id="image" class="popup__field" name="image-field" placeholder="Ссылка на картинку" required>
-                <span class="popup__error image-error"></span>
+                <label class="popup__input">
+                    <input type="text" id="title" class="popup__field" name="title-field" placeholder="Название" minlength="2" maxlength="30" required>
+                    <span class="popup__error title-error"></span>
+                </label>
+                <label class="popup__input">
+                    <input type="url" id="image" class="popup__field" name="image-field" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error image-error"></span>
+                </label>
                 <button type="submit" class="popup__submit-button">Создать</button>
             </form>
         </div>

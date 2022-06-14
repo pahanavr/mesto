@@ -18,10 +18,7 @@ import {
 
 //validation section
 const profileValid = new FormValidator(parameters, formEdit);
-profileValid.enableValidation();
-
 const cardValid = new FormValidator(parameters, formAdd);
-cardValid.enableValidation();
 
 //create section
 function createCard(item) {
@@ -44,11 +41,7 @@ const cardSection = new Section(
   ".elements"
 );
 
-cardSection.renderItems();
-
 const popupImage = new PopupWithImage(".popup_image_type");
-
-popupImage.setEventListeners();
 
 const popupAdd = new PopupWithForm(".popup_add_type", {
   formCardSubmitHandler: (item) => {
@@ -59,8 +52,6 @@ const popupAdd = new PopupWithForm(".popup_add_type", {
   }
 });
 
-popupAdd.setEventListeners();
-
 const profileInfo = new UserInfo(".profile__name", ".profile__position");
 
 const popupEdit = new PopupWithForm(".popup_edit_type", {
@@ -69,8 +60,6 @@ formCardSubmitHandler: (item) => {
   popupEdit.close();
 }
 });
-
-popupEdit.setEventListeners();
 
 elementsAddOpenButton.addEventListener("click", () => {
   popupAdd.open();
@@ -83,3 +72,10 @@ profileEditOpenButton.addEventListener("click", () => {
   positionProfile.value = position;
   popupEdit.open();
 });
+
+profileValid.enableValidation();
+cardValid.enableValidation();
+cardSection.renderItems();
+popupImage.setEventListeners();
+popupAdd.setEventListeners();
+popupEdit.setEventListeners();
