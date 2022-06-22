@@ -48,3 +48,5 @@
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
 @import url(../blocks/popup/_delete_type/popup_delete_type.css);
+@import url(../blocks/popup/_avatar_type/popup_avatar_type.css);
+@import url(../blocks/popup/__form/_avatar_type/popup__form_avatar_type.css);
