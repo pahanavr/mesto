@@ -52,6 +52,8 @@ const popupAdd = new PopupWithForm(".popup_add_type", {
   }
 });
 
+// const profileInfo = new UserInfo(".profile__name", ".profile__position");
+
 const profileInfo = new UserInfo(".profile__name", ".profile__position");
 
 const popupEdit = new PopupWithForm(".popup_edit_type", {
