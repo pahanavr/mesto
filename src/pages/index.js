@@ -1,10 +1,12 @@
-import './index.css';
+import "./index.css";
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts/components/Section.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import UserInfo from "../scripts/components/UserInfo.js";
+import PopupWithConfirmation from "../scripts/components/PopupWithConfirmation";
+import Api from "../scripts/components/Api";
 import {
   parameters,
   formEdit,
@@ -15,6 +17,15 @@ import {
   nameProfile,
   positionProfile,
 } from "../scripts/utils/constants.js";
+
+// create api
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-44/",
+  headers: {
+    authorization: "8eed5c67-fa9a-4d29-83a2-8bfe636f87ce",
+    "Content-Type": "application/json",
+  },
+});
 
 //validation section
 const profileValid = new FormValidator(parameters, formEdit);
@@ -45,11 +56,11 @@ const popupImage = new PopupWithImage(".popup_image_type");
 
 const popupAdd = new PopupWithForm(".popup_add_type", {
   formCardSubmitHandler: (item) => {
-  const inputList = {name: item['title-field'], link: item['image-field']};
-  const card = createCard(inputList);
-  cardSection.addNewItem(card);
-  popupAdd.close();
-  }
+    const inputList = { name: item["title-field"], link: item["image-field"] };
+    const card = createCard(inputList);
+    cardSection.addNewItem(card);
+    popupAdd.close();
+  },
 });
 
 // const profileInfo = new UserInfo(".profile__name", ".profile__position");
@@ -57,11 +68,18 @@ const popupAdd = new PopupWithForm(".popup_add_type", {
 const profileInfo = new UserInfo(".profile__name", ".profile__position");
 
 const popupEdit = new PopupWithForm(".popup_edit_type", {
-formCardSubmitHandler: (item) => {
-  profileInfo.setUserInfo(item['name-field'], item['position-field']);
-  popupEdit.close();
-}
+  formCardSubmitHandler: (item) => {
+    profileInfo.setUserInfo(item["name-field"], item["position-field"]);
+    popupEdit.close();
+  },
 });
+
+const popupAvatar = new PopupWithConfirmation(".popup_avatar_type", {
+  formCardDeleteHandler: (item) => {
+    
+    popupAvatar.close()
+  }
+})
 
 elementsAddOpenButton.addEventListener("click", () => {
   popupAdd.open();
@@ -75,9 +93,12 @@ profileEditOpenButton.addEventListener("click", () => {
   popupEdit.open();
 });
 
+
+
 profileValid.enableValidation();
 cardValid.enableValidation();
 cardSection.renderItems();
 popupImage.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
+popupAvatar.setEventListeners();
