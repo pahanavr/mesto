@@ -10,7 +10,10 @@
         <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого">
     </header>
     <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="аватар">
+        <div class="profile__avatar-box">
+            <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="аватар">
+            <div class="profile__avatar-overlay"></div>
+        </div>
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
