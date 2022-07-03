@@ -33,9 +33,10 @@ module.exports = {
           loader: 'css-loader',
           options: { importLoaders: 1 }
         }, 'postcss-loader']
-    }
-]
-  },
+    },
+],
+  }, 
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
         template: './src/index.html'

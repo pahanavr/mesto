@@ -37,7 +37,7 @@ export default class FormValidator {
   }
 
   //function of disable submit button
-  buttonCardSubmitDisabled() {
+  buttonSubmitDisabled() {
     this._submitButton = this._formType.querySelector(
       this._parameters.submitButtonSelector
     );
@@ -46,7 +46,7 @@ export default class FormValidator {
   }
 
   //function of enable submit button
-  _buttonCardSubmitEnabled() {
+  _buttonSubmitEnabled() {
     this._submitButton.classList.remove(this._parameters.inactiveButtonClass);
     this._submitButton.removeAttribute("disabled", true);
   }
@@ -54,9 +54,9 @@ export default class FormValidator {
   //function of toggle sumbit button
   _buttonToggle() {
     if (this._hasInvalidInput()) {
-      this.buttonCardSubmitDisabled(this._submitButton);
+      this.buttonSubmitDisabled(this._submitButton);
     } else {
-      this._buttonCardSubmitEnabled(this._submitButton);
+      this._buttonSubmitEnabled(this._submitButton);
     }
   }
 

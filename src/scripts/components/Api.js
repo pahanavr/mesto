@@ -33,8 +33,8 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: data["name-field"],
-        position: data["position-field"],
+        name: data['name-field'],
+        about: data['about-field'],
       }),
     }).then((res) => {
       if (res.ok) {
@@ -49,8 +49,8 @@ export default class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: item["title-field"],
-        position: item["image-field"],
+        name: item['title-field'],
+        link: item['image-field'],
       }),
     }).then((res) => {
       if (res.ok) {
@@ -60,8 +60,8 @@ export default class Api {
     });
   }
 
-  likeCard(id) {
-    return fetch(`${this._baseUrl}/likes/${id}`, {
+  likeCard(_id) {
+    return fetch(`${this._baseUrl}/cards/${_id}/likes/`, {
       method: "PUT",
       headers: this._headers,
     }).then((res) => {
@@ -72,8 +72,8 @@ export default class Api {
     });
   }
 
-  deleteLikeCard(id) {
-    return fetch(`${this._baseUrl}/likes/${id}`, {
+  deleteLikeCard(_id) {
+    return fetch(`${this._baseUrl}/cards/${_id}/likes/`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
@@ -84,8 +84,8 @@ export default class Api {
     });
   }
 
-  deleteCard(id) {
-    return fetch(`${this._baseUrl}/cards/${id}`, {
+  deleteCard(_id) {
+    return fetch(`${this._baseUrl}/cards/${_id}`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
@@ -101,7 +101,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data["avatar-icon"],
+        avatar: data['avatar-field'],
       }),
     }).then((res) => {
       if (res.ok) {
