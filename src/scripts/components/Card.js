@@ -51,6 +51,7 @@ export default class Card {
     this._likeCounter.textContent = this._likes.length;
 
     this._liked();
+    this._isOwner();
 
     this._setEventListeners();
 

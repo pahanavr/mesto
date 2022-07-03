@@ -50,7 +50,7 @@ const profileInfo = new UserInfo(
 //create section
 function createCard(item) {
   const card = new Card(item, "#item", {
-    profileId: profileInfo.getUserInfo(),
+    profileId: profileInfo.getId(),
     handleCardClick: (name, link) => {
       popupImage.open(name, link);
     },
@@ -81,11 +81,11 @@ function createCard(item) {
               card.handleDeleteItem();
               popupDelete.close();
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err))
+            .finally(() => {
+              popupDelete.loading(false);
+            });
         })
-        .finally(() => {
-          popupDelete.loading(false);
-        });
     },
   });
   const cardElement = card.generateCard();
