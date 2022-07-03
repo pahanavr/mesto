@@ -23,5 +23,7 @@ Optimized images by [TinyPng](https://tinypng.com/).
 * BEM
 * Adaptive design
 * JavaScript
+* OOP
+* API
 
 Go watch [Mesto](https://pahanavr.github.io/mesto/)
